@@ -3,21 +3,43 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<header class="px-6 py-10 lg:py-20 bg-purple-500">
+{% load static %}
+<style>
+    .gradient-box {
+  background: linear-gradient(to right,#0B2674 , #6d71d7); /* Replace the colors with your desired gradient */
+  padding: 20px;
+  color: #ffffff;
+  transition: background-color 0.3s ease; /* Adds a smooth transition effect */
+
+  /* Add hover effect */
+  cursor: pointer;
+  
+}
+.color{
+    color: #0B2674;
+}
+.gradient-box:hover {
+  background: linear-gradient(to right,#6d71d7, #0B2674); /* Replace the colors with your desired hover gradient */
+}
+
+    </style>
+
+<header class="px-6 py-10 lg:py-20 gradient-box">
     <div class="max-w-3xl mx-auto text-center">
-        <p class="mb-2 text-3xl lg:text-5xl text-white">Welcome to Market</p>
+        <p class="mb-2 text-3xl lg:text-5xl text-white">Welcome to ASU Market</p>
 
-        <p class="mb-10 text-white">We sell furnitues for the modern home</p>
+        <p class="mb-10 text-white">Discover Your Perfect Shopping Experience with Us</p>
 
-    <a href="{% url 'shop' %}" class="inline-block px-8 py-4 rounded-xl bg-white text-purple-500 hover:bg-gray-200">Start shopping</a>
+    <a href="{% url 'shop' %}" class="inline-block px-8 py-4 rounded-xl bg-white color">Start shopping</a>
     </div>
 </header>
 
-<div class="max-w-6xl mx-auto py-2 px-6 xl:px-0">
-    <div class="products flex items-center flex-wrap">
-        {% for product in products %}
-            {% include 'product/partials/product_list_item.html' %}
-        {% endfor %}
-    </div>
+<div class="max-w-6xl mx-auto py-2 px-6 xl:px-0 ">
+        <div class="products flex items-center flex-wrap">
+            {% for product in products %}
+                {% include 'product/partials/product_list_item.html' %}
+            {% endfor %}
+        </div>
+    
 </div>
 {% endblock %}

@@ -5,6 +5,8 @@ from django.core.files import File
 from io import BytesIO
 from PIL import Image
 
+
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
@@ -23,6 +25,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User, related_name='products', on_delete=models.CASCADE,null=True)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 

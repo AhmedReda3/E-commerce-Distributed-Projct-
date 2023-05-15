@@ -3,41 +3,84 @@
 {% block title %}Sign up{% endblock %}
 
 {% block content %}
-<div class="max-w-lg mx-auto flex flex-wrap p-6">
-    <div class="w-full bg-gray-100 p-6 rounded-xl">
+{% load static %}
+<style>
+    .costumHeight{
+        height: 100vh;
+    }
+    .formFlex{
+        justify-content: space-between;
+        height: 100%;
+    }
+    .mb-35{
+        margin-bottom: 35px;
+    }
+    .w-100{
+        width: 100%;
+    }
+    .h-100{
+        height: 100%;
+    }
+    .justify-arround{
+        justify-content: space-between;
+    }
+    .max-w{
+        max-width: 510px;
+        height: calc(100vh - 200px);
+
+    }
+
+    .text_s{
+        font-size:larger;
+        font-weight: bold;
+    }
+
+    .color {
+        background-color: #0B2674;
+    }
+    .border{
+        border-radius: 5px;
+        border: 1px solid #EBE8F0;
+    }
+</style>
+<div class="flex flex-row justify-arround mb-5  mt-5 costumHeight " >
+    <div class="w-1/2  ">
+        <img class="w-100 h-100" src="{% static 'image/req-quotationBg.png' %}" >
+    </div>
+    <div class="p-6 rounded-xl flex flex-col  w-1/2 max-w mx-12">
         <h1 class="mb-6 text-2xl">Sign up</h1>
 
-        <form method="post" action="." class="space-y-3">
+        <form method="post" action="." class="space-y-3 flex flex-col">
             {% csrf_token %}
 
             <div>
                 <label>Username</label>
-                <input type="text" name="username" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="text" name="username" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
             
             <div>
                 <label>First name</label>
-                <input type="text" name="first_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="text" name="first_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
 
             <div>
                 <label>Last name</label>
-                <input type="text" name="last_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="text" name="last_name" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
 
             <div>
                 <label>E-mail</label>
-                <input type="email" name="email" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="email" name="email" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="password" name="password1" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="password" name="password1" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
 
             <div>
                 <label>Repeat pasword</label>
-                <input type="password" name="password2" class="w-full mt-2 py-4 px-6 bg-white rounded-xl">
+                <input type="password" name="password2" class="w-full mt-2 py-4 px-6 bg-white rounded-xl border">
             </div>
 
             {% if form.errors %}
@@ -57,7 +100,7 @@
             {% endif %}
 
             <div>
-                <button class="py-4 px-6 rounded-xl text-white bg-purple-500 hover:bg-purple-700">Submit</button>
+                <button class="  p-3 w-full text-white text_s color">Sign Up</button>
             </div>
         </form>
     </div>
