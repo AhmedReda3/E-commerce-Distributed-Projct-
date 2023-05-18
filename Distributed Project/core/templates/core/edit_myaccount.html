@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit account{% endblock %}
+
+{% block content %}
+{% load static %}
+<style>
+    .costumHeight{
+        height: 100vh;
+    }
+    .formFlex{
+        justify-content: space-between;
+        height: 100%;
+    }
+    .mb-35{
+        margin-bottom: 35px;
+    }
+    .w-100{
+        width: 100%;
+    }
+    .h-100{
+        height: 100%;
+    }
+    .justify-arround{
+        justify-content: space-between;
+    }
+    .max-w{
+        max-width: 510px;
+        height: calc(100vh - 200px);
+
+    }
+
+    .text_s{
+        font-size:larger;
+        font-weight: bold;
+    }
+
+    .color {
+        background-color: #0B2674;
+    }
+   
+    .border{
+        border-radius: 5px;
+        border: 1px solid #EBE8F0;
+    }
+    .small-img {
+    width: 200px;
+    height: 150px;
+  }
+  .center{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    margin-bottom: 50px;
+  }
+
+  .button {
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+
+  }
+
+  .button:hover{
+    color:#0B2674;
+    border: 1px solid #0B2674;
+    background-color: #ffff;
+    
+  }
+  .img{
+    width: 300px;
+  }  
+  .ml{
+    margin-left: 500px;
+  }
+</style>
+<div class="max-w-6xl mx-auto p-6 flex justify-arround" >
+    <div class="w-1/2">
+        <h1 class="mb-5 text-3xl">Edit account</h1>
+    
+        <form method="post" action="." class="space-y-3">
+            {% csrf_token %}
+            
+            <div>
+                <label>First name</label>
+                <input name="first_name" value="{{ request.user.first_name }}" type="text" class="w-full mt-2 py-4 px-6 bg-white border">
+            </div>
+    
+            <div>
+                <label>Last name</label>
+                <input name="last_name" value="{{ request.user.last_name }}" type="text" class="w-full mt-2 py-4 px-6 bg-white border">
+            </div>
+    
+            <div>
+                <label>Username</label>
+                <input name="username" value="{{ request.user.username }}" type="text" class="w-full mt-2 py-4 px-6 bg-white border">
+            </div>
+    
+            <div>
+                <label>E-mail</label>
+                <input name="email" value="{{ request.user.email }}" type="email" class="w-full mt-2 py-4 px-6 bg-white border">
+            </div>
+    
+           
+        </form>
+    </div>
+    <div class="w-1/2 ml ">
+        <img class="small-img mb-35" src="{% static 'image/bussiness-man.png' %}" >
+        <input type="file" name="image" class=" img py-4 px-6  " accept="image/*" id="id_image">
+    </div>
+
+</div>
+<div class="center">
+    <button class="p-3 button text-white text_s color">Submit</button>
+</div>
+
+{% endblock %}
